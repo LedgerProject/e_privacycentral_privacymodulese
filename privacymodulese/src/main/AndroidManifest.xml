@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="foundation.e.privacymodules.e">
+
+    <!-- Required to use OpsManager on other apps. This permission is granted only if the app is
+        privileged by the system (like in /system/priv-app . -->
+    <uses-permission
+        android:name="android.permission.UPDATE_APP_OPS_STATS"
+        tools:ignore="ProtectedPermissions"
+        />
+</manifest>
