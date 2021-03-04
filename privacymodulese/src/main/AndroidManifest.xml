@@ -8,4 +8,20 @@
         android:name="android.permission.UPDATE_APP_OPS_STATS"
         tools:ignore="ProtectedPermissions"
         />
+    <uses-permission
+        android:name="android.permission.GRANT_RUNTIME_PERMISSIONS"
+        tools:ignore="ProtectedPermissions"
+        />
+    <uses-permission
+        android:name="android.permission.REVOKE_RUNTIME_PERMISSIONS"
+        tools:ignore="ProtectedPermissions"
+        />
+
+    <uses-permission android:name="android.permission.WATCH_APPOPS"
+        tools:ignore="ProtectedPermissions"
+        />
+    <uses-permission
+        android:name="android.permission.GET_APP_OPS_STATS"
+        tools:ignore="ProtectedPermissions"
+        />
 </manifest>

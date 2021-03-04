@@ -1,4 +1,4 @@
+include ':privacymodulesapi'
 include ':privacymodulese'
-include 'privacymodulesapi'
-project(':privacymodulesapi').projectDir = new File('../PrivacyModulesApi/privacymodulesapi/')
+//project(':privacymodulesapi').projectDir = new File('../PrivacyModulesApi/privacymodulesapi/')
 rootProject.name = "PrivacyModulesE"
