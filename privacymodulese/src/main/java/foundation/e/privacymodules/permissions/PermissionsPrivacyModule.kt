@@ -53,7 +53,7 @@ class PermissionsPrivacyModule(context: Context): APermissionsPrivacyModule(cont
         permissionName: String,
         mode: AppOpModes
     ): ManualAction? {
-        val op = permissionToOpCode(permissionName)
+        val op = strOpToOp(permissionName)
         if (op != OP_NONE) {
             appOpsManager.setMode(op, appDesc.uid, appDesc.packageName, mode.modeValue)
         }
