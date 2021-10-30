@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 30
@@ -25,7 +24,9 @@ android {
 }
 
 dependencies {
-    implementation project(":privacymodulesapi")
+    implementation 'foundation.e:privacymodule.api:0.2.1'
+
+    //implementation project(":privacymodulesapi")
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
