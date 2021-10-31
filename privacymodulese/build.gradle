@@ -1,15 +1,16 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'maven-publish'
+
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 2
-        versionName "0.0.2"
+        versionCode 3
+        versionName "0.1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -26,8 +27,6 @@ android {
 dependencies {
     implementation 'foundation.e:privacymodule.api:0.2.1'
 
-    //implementation project(":privacymodulesapi")
-
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
@@ -36,4 +35,30 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'foundation.e'
+            //You can either define these here or get them from project conf elsewhere
+            artifactId 'privacymodule.e'
+            version android.defaultConfig.versionName
+//            artifact "$buildDir/outputs/aar/privacymodulese-release.aar" //aar artifact you want to publish
+            artifact "$buildDir/outputs/aar/privacymodulese-debug.aar" //aar artifact you want to publish
+
+            //generate pom nodes for dependencies
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+                configurations.implementation.allDependencies.each { dependency ->
+                    if (dependency.name != 'unspecified') {
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', dependency.group)
+                        dependencyNode.appendNode('artifactId', dependency.name)
+                        dependencyNode.appendNode('version', dependency.version)
+                    }
+                }
+            }
+        }
+    }
 }

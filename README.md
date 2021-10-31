@@ -21,6 +21,11 @@ TL;DR
 * Then we will merge .classes of platform.jar/android into android.jar (using dex2jar at some point)
 * Replace the new builded android.jar in <SDK-dir>/platforms/android-X/
 
+# Build
+
+    ./gradlew :privacymodulese:assembleRelease
+    ./gradlew --console=verbose publishToMavenLocal
+
 
 # Structure (UML class diagrams)
 
