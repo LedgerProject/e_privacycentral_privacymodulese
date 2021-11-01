@@ -7,8 +7,6 @@ import android.net.IConnectivityManager
 import android.os.ServiceManager
 import android.os.UserHandle
 import android.util.Log
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import foundation.e.privacymodules.commons.ManualAction
 import foundation.e.privacymodules.permissions.data.AppOpModes
 import foundation.e.privacymodules.permissions.data.ApplicationDescription
@@ -20,7 +18,7 @@ import java.util.*
 class PermissionsPrivacyModule(context: Context): APermissionsPrivacyModule(context) {
 
     private val appOpsManager: AppOpsManager get()
-        = context.getSystemService(AppCompatActivity.APP_OPS_SERVICE) as AppOpsManager
+        = context.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
 
     /**
      * @see IPermissionsPrivacyModule.toggleDangerousPermission
