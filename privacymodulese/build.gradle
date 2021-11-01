@@ -4,13 +4,13 @@ apply plugin: 'maven-publish'
 
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 29
 
     defaultConfig {
         minSdkVersion 24
-        targetSdkVersion 30
+        targetSdkVersion 29
         versionCode 3
-        versionName "0.1.1"
+        versionName "0.1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -25,7 +25,7 @@ android {
 }
 
 dependencies {
-    implementation 'foundation.e:privacymodule.api:0.2.1'
+    implementation 'foundation.e:privacymodule.api:0.3.1'
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -42,10 +42,10 @@ publishing {
         maven(MavenPublication) {
             groupId 'foundation.e'
             //You can either define these here or get them from project conf elsewhere
-            artifactId 'privacymodule.e'
+            artifactId 'privacymodule.e-29'
             version android.defaultConfig.versionName
-//            artifact "$buildDir/outputs/aar/privacymodulese-release.aar" //aar artifact you want to publish
-            artifact "$buildDir/outputs/aar/privacymodulese-debug.aar" //aar artifact you want to publish
+            artifact "$buildDir/outputs/aar/privacymodulese-release.aar" //aar artifact you want to publish
+//            artifact "$buildDir/outputs/aar/privacymodulese-debug.aar" //aar artifact you want to publish
 
             //generate pom nodes for dependencies
             pom.withXml {

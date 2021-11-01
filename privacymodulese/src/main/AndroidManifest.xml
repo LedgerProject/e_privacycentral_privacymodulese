@@ -2,12 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="foundation.e.privacymodules.e">
 
-    <!-- Required to use OpsManager on other apps. This permission is granted only if the app is
-        privileged by the system (like in /system/priv-app . -->
-    <uses-permission
-        android:name="android.permission.UPDATE_APP_OPS_STATS"
-        tools:ignore="ProtectedPermissions"
-        />
+    <uses-permission android:name="android.permission.MANAGE_APP_OPS_MODES"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission
         android:name="android.permission.GRANT_RUNTIME_PERMISSIONS"
         tools:ignore="ProtectedPermissions"
@@ -17,6 +13,14 @@
         tools:ignore="ProtectedPermissions"
         />
 
+    <!-- The following permission have privileged protection level.
+        These permissions are granted only if the app is privileged by the system,
+         like installed in /system/priv-app and a privapp-permissions in /system/etc/permissions/
+        (see eprivavymoduledemo for an example) -->
+    <uses-permission
+        android:name="android.permission.UPDATE_APP_OPS_STATS"
+        tools:ignore="ProtectedPermissions"
+        />
     <uses-permission android:name="android.permission.WATCH_APPOPS"
         tools:ignore="ProtectedPermissions"
         />
@@ -24,7 +28,9 @@
         android:name="android.permission.GET_APP_OPS_STATS"
         tools:ignore="ProtectedPermissions"
         />
-    <uses-permission android:name="android.permission.MANAGE_APP_OPS_MODES"
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions"
+        />
+    <uses-permission android:name="android.permission.CONTROL_VPN"
         tools:ignore="ProtectedPermissions" />
-
 </manifest>

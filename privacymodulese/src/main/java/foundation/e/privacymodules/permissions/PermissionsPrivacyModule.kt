@@ -3,6 +3,9 @@ package foundation.e.privacymodules.permissions
 import android.app.AppOpsManager
 import android.app.AppOpsManager.*
 import android.content.Context
+import android.net.IConnectivityManager
+import android.os.ServiceManager
+import android.os.UserHandle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -41,7 +44,6 @@ class PermissionsPrivacyModule(context: Context): APermissionsPrivacyModule(cont
                 )
             }
         } catch (e: Exception) {
-            Toast.makeText(context, "Exception occured: ${e.message}", Toast.LENGTH_SHORT)
             Log.e("Permissions-e", "Exception while setting permission", e)
         }
 
@@ -61,6 +63,25 @@ class PermissionsPrivacyModule(context: Context): APermissionsPrivacyModule(cont
     }
 
     override fun isAccessibilityEnabled(): Boolean? = null
+
+    override fun setVpnPackageAuthorization(packageName: String): Boolean {
+        val service: IConnectivityManager = IConnectivityManager.Stub.asInterface(
+            ServiceManager.getService(Context.CONNECTIVITY_SERVICE))
+
+        try {
+            if (service.prepareVpn(null, packageName, UserHandle.myUserId())) {
+                // Authorize this app to initiate VPN connections in the future without user
+                // intervention.
+                service.setVpnPackageAuthorization(packageName, UserHandle.myUserId(), true)
+                return true
+            }
+        } catch (e: java.lang.Exception) {
+            Log.e("Permissions-e", "Exception while setting VpnPackageAuthorization", e)
+        } catch (e: NoSuchMethodError) {
+            Log.e("Permissions-e", "Bad android sdk version", e)
+        }
+        return false
+    }
 
     // WIP, get history of permissions use.
     fun testPermissionHistory(appDesc: ApplicationDescription,
@@ -93,4 +114,6 @@ class PermissionsPrivacyModule(context: Context): APermissionsPrivacyModule(cont
 //            })
 
     }
+
+
 }

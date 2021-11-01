@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="view"
+            type="foundation.e.eprivacymoduledemo.MainActivity" />
+        <variable
+            name="quickTestLog"
+            type="String" />
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            >
+        <TextView
+            android:id="@+id/presentation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="E PrivacyModuleDemo demonstrates the functionality that the privacy modules offers. This allow to set a fake location, explore and set permissions of the installed apps."
+            android:textSize="16sp"
+            />
+
+        <Button
+            android:id="@+id/permissions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Permissions"
+            android:layout_marginTop="16dp"
+            android:onClick="@{view::onClickPermissions}"
+            />
+
+        <Button
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fake location"
+            android:layout_marginTop="16dp"
+            android:onClick="@{view::onClickFakeLocation}"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quick test"
+            android:layout_marginTop="16dp"
+            android:onClick="@{view::onClickQuickTest}"
+            android:visibility="visible"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{quickTestLog}"
+            android:visibility="visible"
+            />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
