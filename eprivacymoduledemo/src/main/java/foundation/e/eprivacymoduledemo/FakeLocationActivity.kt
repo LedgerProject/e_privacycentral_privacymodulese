@@ -13,15 +13,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import foundation.e.eprivacymoduledemo.databinding.FakeLocationActivityBinding
-import foundation.e.privacymodules.location.FakeLocation
-import foundation.e.privacymodules.location.IFakeLocation
+import foundation.e.privacymodules.location.FakeLocationModule
+import foundation.e.privacymodules.location.IFakeLocationModule
 import foundation.e.privacymodules.permissions.PermissionsPrivacyModule
 import foundation.e.privacymodules.permissions.data.AppOpModes
 import foundation.e.privacymodules.permissions.data.ApplicationDescription
 
 class FakeLocationActivity : AppCompatActivity() {
 
-    private val fakeLocationModule: IFakeLocation by lazy { FakeLocation(this) }
+    private val fakeLocationModule: IFakeLocationModule by lazy { FakeLocationModule(this) }
     private val permissionsModule by lazy { PermissionsPrivacyModule(this) }
 
     private lateinit var binding: FakeLocationActivityBinding

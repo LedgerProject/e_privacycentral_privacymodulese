@@ -24,7 +24,17 @@ TL;DR
 # Build
 
     ./gradlew :privacymodulese:assembleRelease
+
+## To deploy localy duringdevelopment
+
     ./gradlew --console=verbose publishToMavenLocal
+
+## To push release on gitlab
+
+    ./gradlew --console=verbose publish
+
+
+
 
 
 # Structure (UML class diagrams)
