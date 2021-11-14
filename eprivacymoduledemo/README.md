@@ -26,6 +26,8 @@ PrivacyCentral needs to be installed as system app and whitelisting in order to 
         ```bash
         adb push privapp-permissions-foundation.e.eprivacymoduledemo.xml /system/etc/permissions/
         ```
+1. Allow the fake location service to run in background. Add     <allow-in-power-save package="foundation.e.privacymoduledemo" /> in the file /system/etc/permissions/platform.xml . 
+
 1. Reboot the device
     ```shell
     adb reboot
