@@ -4,22 +4,29 @@ This Android Module (aar) implements PrivacyModules functionalities with all the
 
 ## How to compile this module
 
+
+This module requires privacymodulesapi to be already built and publish to your local maven repository
+
 This module relies on many hidden features of the Android framework. The use of these features (methods) are protected in the standard sdk. 
 To be able to compile this module, you will need a specific version of android framework library.   
 
-You can just follow the instructions given by this project [ anggrayudi/android-hidden-api ](https://github.com/anggrayudi/android-hidden-api) to get everything setup.  
+You can use a premade android.jar or you can just follow the instructions given by this project [ anggrayudi/android-hidden-api ](https://github.com/anggrayudi/android-hidden-api) to get everything setup.
 
-**Caution:** Actually, the given android.jar for sdk 29 (android 10 / Q) doesn't work out of the box. To make it work, you just have to unzip it twice, until you get a list of directories (android, androidx, assets, ...) in the root of the android.jar archive.
+With a premade android jar:
 
+To build for Android SDK 29:
 
-https://hardiannicko.medium.com/create-your-own-android-hidden-apis-fa3cca02d345
+Download the premade android.jar from there https://drive.google.com/drive/folders/10TGHc-yK1cQjXruBVidbpZOXURKMvLvZ
 
-TL;DR
+This file is in fact a hidden rar file and needs to be extracted 
 
-* Get your sdk's android.jar here : <SDK-dir>/platforms/android-X/android.jar
-* On a running android device (/e/ one to be sure about the licences) get the platform.jar : `adb pull /system/framework/framework.jar`
-* Then we will merge .classes of platform.jar/android into android.jar (using dex2jar at some point)
-* Replace the new builded android.jar in <SDK-dir>/platforms/android-X/
+```unrar e  path-to-download/android.jar```
+
+Replace your sdk jar by the resulting jar
+
+```
+cp android29.jar your-android-sdk-folder/platforms/android-29/android.jar
+```
 
 # Build
 
